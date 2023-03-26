@@ -1,0 +1,102 @@
+/* Style the body */
+body {
+   font-family: Arial, sans-serif;
+   background-color: #f2f2f2;
+   margin: 0;
+ }
+ 
+ /* Style the container */
+ .container {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: auto auto auto auto;
+   justify-items: center;
+   align-items: center;
+   height: 100vh;
+ }
+ 
+ /* Style the heading */
+ h1 {
+   grid-row: 1;
+   justify-self: center;
+   font-size: 36px;
+   color: #555;
+ }
+ 
+ /* Style the form */
+ form {
+   display: grid;
+   grid-row: 2;
+   grid-template-columns: auto 1fr;
+   grid-template-rows: repeat(2, auto) 1fr;
+   gap: 20px;
+   justify-items: center;
+   align-items: center;
+   padding: 20px;
+   border: 1px solid #ccc;
+   background-color: #fff;
+   border-radius: 4px;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+ }
+ 
+ /* Style the form labels */
+ label {
+   grid-column: 1;
+   font-size: 18px;
+   color: #555;
+ }
+ 
+ /* Style the form input fields */
+ input[type="text"], input[type="password"] {
+   grid-column: 2;
+   width: 100%;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+ }
+ 
+ /* Style the form submit button */
+ input[type="submit"] {
+   grid-column: 2 / 3;
+   grid-row: 4;
+   background-color: #4CAF50;
+   color: #fff;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   justify-self: end;
+ }
+ 
+ /* Style the form submit button on hover */
+ input[type="submit"]:hover {
+   background-color: #45a049;
+ }
+ 
+ /* Media queries for responsive design */
+ @media only screen and (max-width: 768px) {
+   /* Change the container layout to a single column */
+   .container {
+     grid-template-columns: 1fr;
+     grid-template-rows: auto auto auto;
+     justify-items: center;
+     align-items: center;
+   }
+ 
+   /* Reduce font size of the form labels and input fields */
+   label, input[type="text"], input[type="password"] {
+     font-size: 14px;
+   }
+ 
+   /* Change the grid layout of the form */
+   form {
+     grid-template-columns: auto;
+     grid-template-rows: repeat(2, auto) 1fr auto;
+   }
+ 
+   /* Center the submit button */
+   input[type="submit"] {
+     justify-self: center;
+   }
+ }
+ 
