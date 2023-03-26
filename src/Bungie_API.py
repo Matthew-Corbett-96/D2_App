@@ -1,5 +1,10 @@
-import requests
 import os
+
+import requests
+
+OAUTH_URL = 'https://www.bungie.net/en/OAuth/Authorize'
+OAUTH_CLIENT_ID = 43559
+
 
 def get_destiny2_character_data(membership_type: int, character_id: str) -> dict:
     '''
@@ -11,7 +16,7 @@ def get_destiny2_character_data(membership_type: int, character_id: str) -> dict
     api_key = os.environ.get('BUNGIE_API_KEY')
     if not api_key:
         raise ValueError('BUNGIE_API_KEY environment variable is not set')
-    
+
     url = f'https://www.bungie.net/Platform/Destiny2/{membership_type}/Profile/{character_id}/?components=200'
 
     headers = {
@@ -25,6 +30,6 @@ def get_destiny2_character_data(membership_type: int, character_id: str) -> dict
         character_data = response.json()['Response']['characters']['data']
         # process the character data from Bungie API for Destiny 2
         return character_data
-    else:
-        print(f'Error retrieving character data: {response.status_code}')
-        return None
+        
+    print(f'Error retrieving character data: {response.status_code}')
+    return None
