@@ -1,9 +1,8 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-
+# import get_destiny2_character_data function from Bungie_API.py
 from Bungie_API import get_destiny2_character_data
-# import models from models folder
-from models.models import Character
+# import models
+from models import Character
 
 app = FastAPI(
     title="Destiny 2 API",
@@ -11,24 +10,6 @@ app = FastAPI(
     version="0.1.0",
     docs_url="/docs",
 )
-
-# origins = [
-#     "http://localhost",
-#     "http://localhost:8080",
-#     "http://localhost:8081",
-#     "http://localhost:8082",
-#     "http://localhost:8083",
-#     "http://localhost:8084"
-# ]
-
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
-
 
 @app.get("/")
 def read_root():
@@ -55,5 +36,5 @@ def get_data(character: Character) -> dict or None:
         print(character_data)
         return character_data
     except Exception as exception:
-        print(exception.with_traceback())
+        print(exception)
         return None
