@@ -1,9 +1,8 @@
-from fastapi import FastAPI
 import logging
-# import get_destiny2_character_data function from Bungie_API.py
+
 import Bungie_API as bungie
 from Bungie_Item_Models import Friend
-# import models
+from fastapi import FastAPI
 from models import User
 
 app = FastAPI(
@@ -12,6 +11,7 @@ app = FastAPI(
     version="0.1.0",
     docs_url="/docs"
 )
+
 
 @app.get("/")
 def read_root():
@@ -49,12 +49,13 @@ def get_data(user: User) -> dict or None:
     :return: Bungie Profile data
     '''
     try:
-        results = bungie.get_profiles(membership_id=user.bungieMemberId, 
+        results = bungie.get_profiles(membership_id=user.bungieMemberId,
                                       membership_type=user.membershipType)
         return results
     except Exception as exception:
         logging.error(exception)
         return None
+
 
 @app.get("/getFriendsList")
 def get_friends_list() -> list[Friend] | None:

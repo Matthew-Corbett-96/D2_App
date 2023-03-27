@@ -13,10 +13,3 @@ class User(BaseModel):
     name: str
     membershipType: int
     bungieMemberId: str
-
-
-# commit message based on changes 
-# 1. added Bungie_API_Models.py
-# 2. added Bungie_API.py
-# 3. added Bungie_Enums.py
-# 4. added Bungie_Item_Models.py
